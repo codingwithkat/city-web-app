@@ -17,20 +17,34 @@
     border: #FFFFFF; 
 }
 
-.city, .temperature {
-    text-align: center;
-}
-
 .city {
     padding-top: 15px;
     color: #f67280;
+    text-align: center;
 }
 
 .temperature {
+    display: inline-block;
+    margin: 0 auto;
     font-size: 34px;
     font-weight: bold;
     color: #40e0d0;
+    text-align: center;
+}
 
+.unit {
+    text-align: center;
+    color: #40e0d0;
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 24px;
+    position: relative;
+    line-height: 1;
+    top: -8px;
+}
+
+.temp-unit {
+    text-align: center;
 }
 
 .description-icon {
