@@ -1,0 +1,46 @@
+.Weather {
+    border: 1px solid #000000;
+    padding-top: 16px;
+    border-radius: 5px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #010a43;
+}
+
+.search-bar {
+    display: block;
+    margin: 0 auto;
+}
+
+.btn-primary {
+    color: #010a43!important; 
+    background-color: #f67280 !important;
+    border: #FFFFFF; 
+}
+
+.city, .temperature {
+    text-align: center;
+}
+
+.city {
+    padding-top: 15px;
+    color: #f67280;
+}
+
+.temperature {
+    font-size: 34px;
+    font-weight: bold;
+    color: #40e0d0;
+
+}
+
+.description-icon {
+    display: block;
+    margin: 0 auto;
+    width: 120px;
+}
+
+li {
+    color: #40e0d0;
+    list-style: none;
+    font-size: 18px;
+}
