@@ -1,19 +1,18 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "../css/Weather.css";
+import WeatherInfo from "../components/WeatherInfo";
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import axios from "axios";
 
 
-
-
-export default function Weather() {
+export default function Weather(props) {
     const [weatherData, setWeatherData] = useState({ ready: false });
+    const [city, setCity] = useState(props.defaultCity);
 
     function handleResponse(response) {
-        console.log(response.data);
         setWeatherData({
             ready: true,
             temperature: response.data.main.temp,
@@ -21,10 +20,25 @@ export default function Weather() {
             humidity: response.data.main.humidity,
             city: response.data.name,
             description: response.data.weather[0].description,
-            date: "Wednesday 17:07",
-            iconUrl: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-        })
+            date: new Date(response.data.dt * 1000),
+            icon: response.data.weather[0].icon
+        });
+    }
 
+    function handleSubmit(event) {
+        event.preventDefault();
+        search();
+    }
+
+    function handleCityChange(event) {
+        setCity(event.target.value);
+
+    }
+
+    function search() {
+        const apiKey = "09fda6f90b159be94949753225d9045d";
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+        axios.get(apiUrl).then(handleResponse);
     }
 
     if (weatherData.ready) {
@@ -33,10 +47,11 @@ export default function Weather() {
                 <Container>
                     <Row className="search-bar">
                         <Col xs={9} sm={9} lg={9}>
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <input type="search"
                                     placeholder="City.."
-                                    className="form-control" />
+                                    className="form-control"
+                                    onChange={handleCityChange} />
                             </form>
                         </Col>
                         <Col xs={3} sm={3} lg={3}>
@@ -46,41 +61,11 @@ export default function Weather() {
                         </Col>
                     </Row>
                 </Container>
-                <ul>
-                    <li>
-                        <h1 className="city">{weatherData.city}</h1>
-                    </li>
-                    <li>
-                        <div className="temp-unit"><span className="temperature">{Math.round(weatherData.temperature)}</span><span className="unit">°F</span></div>
-                    </li>
-                    <li>
-                        <img src={weatherData.iconUrl} alt={weatherData.description} className="description-icon"></img>
-                    </li>
-                </ul>
-                <Container>
-                    <Row>
-                        <Col>
-                            <ul>
-                                <li>{weatherData.date}</li>
-                                <li className="text-capitalize">{weatherData.description}</li>
-                            </ul>
-                        </Col>
-                        <Col>
-                            <ul>
-                                <li>Humidity: {weatherData.humidity}%</li>
-                                <li>Wind: {Math.round(weatherData.wind)} km/h</li>
-                            </ul>
-                        </Col>
-                    </Row>
-                </Container>
+                <WeatherInfo data={weatherData} />
             </div >
         );
     } else {
-        const apiKey = "09fda6f90b159be94949753225d9045d";
-        let city = "Philadelphia";
-        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-        axios.get(apiUrl).then(handleResponse);
-
+        search();
         return "Loading...";
     }
 }

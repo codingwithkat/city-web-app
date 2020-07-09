@@ -23,27 +23,24 @@
     text-align: center;
 }
 
-.temperature {
-    display: inline-block;
-    margin: 0 auto;
+.WeatherTemperature {
     font-size: 34px;
     font-weight: bold;
     color: #40e0d0;
     text-align: center;
 }
 
-.unit {
-    text-align: center;
+.Weather .unit {
     color: #40e0d0;
     display: inline-block;
     margin: 0 auto;
-    font-size: 24px;
+    font-size: 18px;
     position: relative;
     line-height: 1;
-    top: -8px;
+    top: -11px;
 }
 
-.temp-unit {
+.Weather .temperature, .Weather .unit {
     text-align: center;
 }
 
@@ -57,4 +54,10 @@ li {
     color: #40e0d0;
     list-style: none;
     font-size: 18px;
+}
+
+.Weather canvas {
+    padding-top: 10px;
+    display: block;
+    margin: 0 auto;
 }
