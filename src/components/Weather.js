@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../css/Weather.css";
 import WeatherInfo from "../components/WeatherInfo";
+import WeatherForecast from "../components/WeatherForecast";
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
@@ -62,6 +63,7 @@ export default function Weather(props) {
                     </Row>
                 </Container>
                 <WeatherInfo data={weatherData} />
+                <WeatherForecast city={weatherData.city} />
             </div >
         );
     } else {
