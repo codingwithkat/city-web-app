@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <Weather defaultCity="Philadelphia" />
       <footer>
-        This project was coded by <a href="https://www.linkedin.com/in/katerina-papaloukas/">Katerina Papaloukas</a> and is {""}
+        This project was coded by <a href="https://www.linkedin.com/in/katerina-papaloukas-scoullos/">Katerina Scoullos</a> and is {""}
         <a href="https://github.com/codingwithkat/shecodesplus-final" target="_blank">open-sourced on GitHub.</a> <span role="img" alt="eyeglass emoji">🤓</span>
       </footer>
 
